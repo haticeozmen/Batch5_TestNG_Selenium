@@ -4,51 +4,39 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 public class WebDriverFactory {
+
     /**
+     * write a static method that is named getDriver
+     * it takes a string parameter (browserType)
+     * it will return a WebDriver based on parameter (chrome, safari, firefox, edge) and set up the browser for the test
+     */
 
-     write a static method that is named getDriver
-     it takes a string parameter (browserType)
-     it will return a WebDriver based on parameter
-     (chrome, safari, firefox) and set up the browser
-     for the test*/
-
-    public static void main(String[] args) {
-
-        getDriver("edge");
-
-        getDriver("chorme");
-    }
-    public static WebDriver getDriver (String browserType ){
-
-//        WebDriverManager.edgedriver().setup();
-//        WebDriverManager.chromedriver().setup();
-//        if (browserType.equalsIgnoreCase("edge")) {
-//            WebDriver driver=new EdgeDriver();
-//            driver.manage().window().maximize();
-//
-//
-//        }
-//        if (browserType.equalsIgnoreCase("chorme") ) {
-//            WebDriver driver=new ChromeDriver();
-//            driver.manage().window().maximize();
-//
-//        }
-
-        WebDriver driver=null;
+    public static WebDriver getDriver(String browserType){
+        WebDriver driver = null;
         switch (browserType.toLowerCase()){
-            case"chorme":
+            case "chrome":
                 WebDriverManager.chromedriver().setup();
-                driver=new ChromeDriver();
+                driver = new ChromeDriver();
                 break;
-            case"edge":
+            case "safari":
+                WebDriverManager.safaridriver().setup();
+                driver = new SafariDriver();
+                break;
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+                break;
+            case "edge":
                 WebDriverManager.edgedriver().setup();
-                driver=new EdgeDriver();
+                driver = new EdgeDriver();
                 break;
-
         }
+        driver.manage().window().maximize();
         return driver;
-
     }
+
 }

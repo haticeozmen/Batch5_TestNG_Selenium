@@ -1,4 +1,4 @@
-package com.kraftechnologie.tests.dsy05_xpath;
+package com.kraftechnologie.tests.day05_xpath;
 
 import com.kraftechnologie.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
@@ -20,6 +20,6 @@ validate text of webElements*/
         driver.manage().window().maximize();
         WebElement homeElement= driver.findElement(By.xpath("/html/body/main/div/nav/ol/li/a"));
 
-        String actualHomeText="Home"
+
     }
 }

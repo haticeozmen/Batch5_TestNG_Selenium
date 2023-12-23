@@ -9,19 +9,18 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class Thread {
+public class ThreadSleepExample {
     WebDriver driver;
 
     @BeforeMethod
     public void setUp() throws InterruptedException {
         driver = WebDriverFactory.getDriver("chrome");
-        java.lang.Thread.sleep(2000);
+        Thread.sleep(2000);
 
     }
-
     @AfterMethod
     public void tearDown() throws InterruptedException {
-        java.lang.Thread.sleep(3000);
+        Thread.sleep(3000);
         driver.quit();
     }
 
@@ -29,7 +28,7 @@ public class Thread {
     public void  t_TreadSleepWait() throws InterruptedException {
         driver.get("https://the-internet.herokuapp.com/dynamic_loading/1");
         driver.findElement(By.cssSelector("#start>button")).click();
-        java.lang.Thread.sleep(5000);
+        Thread.sleep(5000);
         WebElement hello=driver.findElement(By.xpath("//h4[text()='Hello World!']"));
         Assert.assertEquals(hello.getText(),"Hello World!");
 
